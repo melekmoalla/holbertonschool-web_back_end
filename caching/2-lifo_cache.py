@@ -29,7 +29,7 @@ class LIFOCache(BaseCaching):
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 name = list(self.cache_data)[3]
                 print('DISCARD:' + ' ' + name)
-                self.cache_data.pop(e)
+                self.cache_data.pop(name)
                 
 
     def get(self, key):
