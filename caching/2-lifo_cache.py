@@ -22,7 +22,7 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """ function put
         """
-        if key or item:
+        if key and item:
             if key in self.cache_data:
                 self.cache_data.pop(key)
             self.cache_data[key] = item
