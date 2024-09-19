@@ -22,19 +22,14 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """ function put
         """
-        if key is None or item is None:
-                    return
-                
-        if key in self.cache_data:
-            self.order.remove(key)
-        elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            # LIFO eviction: remove the last inserted item
-            last_key = self.order.pop()
-            del self.cache_data[last_key]
-            print(f"DISCARD: {last_key}")
-
-        self.cache_data[key] = item
-        self.order.append(key)
+        if key and item:
+            if key in self.cache_data:
+                self.cache_data.pop(key)
+            self.cache_data[key] = item
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                last_key = list(self.cache_data)[3]
+                print(f"DISCARD: {last_key}")
+                del self.cache_data[last_key]
 
     def get(self, key):
         """ function get
