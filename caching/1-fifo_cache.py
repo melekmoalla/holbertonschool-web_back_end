@@ -32,7 +32,7 @@ class FIFOCache(BaseCaching):
     def get(self, key):
         """ function get
         """
-        if key:
+        if key and key in self.cache_data:
             return self.cache_data[key]
         else:
             return None
