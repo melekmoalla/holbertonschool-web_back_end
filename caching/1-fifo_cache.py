@@ -4,6 +4,7 @@
 Create a class FIFOCache that inherits from
 BaseCaching and is a caching system:
 """
+
 from base_caching import BaseCaching
 
 
@@ -19,7 +20,7 @@ class FIFOCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        """ function iputit
+        """ function put
         """
         if key and item:
             self.cache_data[key] = item
@@ -29,6 +30,8 @@ class FIFOCache(BaseCaching):
                 self.cache_data.pop(name)
 
     def get(self, key):
+        """ function get
+        """
         if key:
             return self.cache_data[key]
         else:
