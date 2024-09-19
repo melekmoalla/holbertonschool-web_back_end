@@ -32,7 +32,7 @@ class LIFOCache(BaseCaching):
 
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 
-                last_key = list(self.cache_data)[3]
+                last_key = list(self.cache_data)[-2]
                 print(f"DISCARD: {last_key}")
                 ast_key = self.order.pop(-2)
                 del self.cache_data[last_key]
@@ -40,4 +40,7 @@ class LIFOCache(BaseCaching):
     def get(self, key):
         """ function get
         """
-        return self.cache_data.get(key, None)
+        if key and key in self.cache_data:
+            return self.cache_data[key]
+        else:
+            return None
