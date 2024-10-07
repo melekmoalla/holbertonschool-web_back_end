@@ -5,10 +5,10 @@ from typing import List
 
 
 def filter_datum(
-           fields,
-        redaction,
-        message,
-        separator) -> str:
+        fields: List[str],
+        redaction: str,
+        message: str,
+        separator: str):
 
     pattern = f"({'|'.join(fields)})=[^{separator}]+"
     return re.sub(
