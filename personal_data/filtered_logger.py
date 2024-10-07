@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-
-"""
-filter_datum file
-"""
-
+"""Module to filter and obfuscate sensitive data in log messages."""
 import re
+from typing import List
 
+def filter_datum(fields: List[str], redaction: str, message: str, separator: str) -> str:
+    """
+    Obfuscates the values of specified fields in a log message.
 
-def filter_datum(fields, redaction, message, separator):
+    Args:
+        fields (List[str]): The list of fields to obfuscate.
+        redaction (str): The string to replace the field values with.
+        message (str): The log message to be filtered.
+        separator (str): The field separator in the log message.
+
+    Returns:
+        str: The obfuscated log message.
     """
-    filter_datum file
-    """
-    for field in fields:
-        message = re.sub(
-            f"{field}=[^{separator}]+",
-            f"{field}={redaction}",
-            message)
-    return message
+    pattern = f"({'|'.join(fields)})=[^{separator}]+"
+    return re.sub(pattern, lambda match: f"{match.group(1)}={redaction}", message)
