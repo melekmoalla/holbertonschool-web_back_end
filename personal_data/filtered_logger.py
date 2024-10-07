@@ -53,6 +53,6 @@ class RedactingFormatter(logging.Formatter):
             self.REDACTION,
             original_message,
             self.SEPARATOR)
-        
+
         record.msg = redacted_message
         return super().format(record)
