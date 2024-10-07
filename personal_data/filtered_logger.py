@@ -15,3 +15,4 @@ def filter_datum(
         pattern,
         lambda match: f"{match.group(1)}={redaction}",
         message)
+
