@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 
+"""
+filter_datum file
+"""
+
 import re
+
 
 def filter_datum(fields, redaction, message, separator):
     for field in fields:
-        message = re.sub(f"{field}=[^{separator}]+", f"{field}={redaction}", message)
+        message = re.sub(
+            f"{field}=[^{separator}]+",
+            f"{field}={redaction}",
+            message)
     return message
 
 
@@ -17,7 +25,7 @@ def filter_datum(fields, redaction, message, separator):
         lis= i.split('=')
         for b in fields:
             if b == lis[0]:
-                value += lis[0]+'='+redaction          
+                value += lis[0]+'='+redaction
                 break
         if value != "":
             ph += value + separator
