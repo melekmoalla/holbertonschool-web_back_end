@@ -7,6 +7,7 @@ hash_password function that expects one string argument
 
 import bcrypt
 
+
 def hash_password(password: str) -> bytes:
     """
     hash_password function that expects one string argument
