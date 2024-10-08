@@ -60,6 +60,9 @@ class RedactingFormatter(logging.Formatter):
 
 
 def get_logger() -> logging.Logger:
+    """
+    function that takes no arguments and returns a logging.Logger object.
+    """
     logger = logging.getLogger('user_data')
     logger.setLevel(logging.INFO)
     handler = logging.StreamHandler()
