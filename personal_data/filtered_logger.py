@@ -82,7 +82,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     database (mysql.connector.connection.MySQLConnection object).
     """
     username = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
-    password = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+    password = 'workhard200kd'
     host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
     database = os.getenv('PERSONAL_DATA_DB_NAME')
     connection = mysql.connector.connect(user=username,
@@ -90,3 +90,34 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
                                          host=host,
                                          database=database)
     return connection
+
+
+def main():
+    """
+    Implement a main function that takes no
+    arguments and returns nothing.
+    """
+    logger = get_logger()
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+
+    rows = cursor.fetchall()
+
+    for row in rows:
+        log_message = f"name = {row[0]}
+        email = {row[1]}
+        phone = {row[2]}
+        ssn = {row[3]}
+        password = {row[4]}
+        ip = {row[5]}
+        last_login = {row[6]}
+        user_agent = {row[7]}"
+        logger.info(log_message)
+
+    cursor.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
