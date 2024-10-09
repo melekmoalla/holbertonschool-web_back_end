@@ -1,0 +1,2 @@
+caching
+Basic_authentication
