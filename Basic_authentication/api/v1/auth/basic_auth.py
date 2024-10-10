@@ -65,12 +65,13 @@ class BasicAuth(Auth):
             return None
 
         user = User.search({"email": user_email})
-        if not user :
+        if not user or len(user) == 0:
             return None
         for i in user:
-            if not i.is_valid_password(user_pwd):
-                return None
-            return i
+            if i.is_valid_password(user_pwd):
+                return i
+
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
