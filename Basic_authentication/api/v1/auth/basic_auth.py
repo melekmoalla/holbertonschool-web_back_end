@@ -4,6 +4,8 @@ Route module for the API
 """
 from api.v1.auth.auth import Auth
 import base64
+from typing import TypeVar
+from models.user import User
 
 
 class BasicAuth(Auth):
@@ -53,3 +55,22 @@ class BasicAuth(Auth):
         m, m1 = decoded_base64_authorization_header.split(':')
 
         return m, m1
+
+    def user_object_from_credentials(self, user_email: str,
+                                     user_pwd: str) -> TypeVar('User'):
+        """
+        that returns the user email and password from the Base64 decoded value.
+        """
+        if user_email is None or user_pwd is None:
+            return None
+        if type(user_email) is not str or type(user_pwd) is not str:
+            return None
+
+        user = User.search({"email": user_email})
+        if not user:
+            return None
+        user = user[0]
+        if not user.is_valid_password(user_pwd):
+            return None
+
+        return user
