@@ -61,13 +61,14 @@ class BasicAuth(Auth):
         """
         that returns the user email and password from the Base64 decoded value.
         """
-        if user_email is None or user_pwd is None:
+        if user_email is None or not isinstance(user_email, str):
             return None
-        if type(user_email) is not str or type(user_pwd) is not str:
+
+        if user_pwd is None or not isinstance(user_pwd, str):
             return None
 
         user = User.search({"email": user_email})
-        if not user or len(user) == 0:
+        if not user or user == []:
             return None
         user = user[0]
         if not user.is_valid_password(user_pwd):
