@@ -61,19 +61,30 @@ class BasicAuth(Auth):
         """
         that returns the User instance based on his email and password.
         """
-        if user_email is None or not isinstance(user_email, str):
+        if not isinstance(user_email, str) or not isinstance(user_pwd, str):
             return None
 
-        if user_pwd is None or not isinstance(user_pwd, str):
+        user = User.search({"email": user_email})
+        if not user:
             return None
-
-        user_list = User.search({'email': user_email})
-        if not user_list or len(user_list) == 0:
-            return None
-
-        user = user_list[0]
-
+        user = user[0]
         if not user.is_valid_password(user_pwd):
             return None
 
         return user
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """
+        hat overloads Auth and retrieves the User instance for a request
+        """
+        auth_header = self.authorization_header(request)
+        if auth_header is None:
+            return None
+        base_auth_header = self.extract_base64_authorization_header(
+            auth_header)
+        decode_auth_header = self.decode_base64_authorization_header(
+            base_auth_header)
+        email, pawd = self.extract_user_credentials(decode_auth_header)
+        user_auth_header = self.user_object_from_credentials(email, pawd)
+
+        return user_auth_header
