@@ -2,7 +2,7 @@
 """
 Route module for the API
 """
-
+from models.user import User
 from api.v1.auth.auth import Auth
 import uuid
 
@@ -38,4 +38,5 @@ class SessionAuth(Auth):
         """
         found any session
         """
-        return self.user_id_for_session_id(self.session_cookie(request))
+        user_id = self.user_id_for_session_id(self.session_cookie(request))
+        return User.get(user_id)
