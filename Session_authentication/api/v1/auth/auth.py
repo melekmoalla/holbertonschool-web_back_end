@@ -8,7 +8,6 @@ from flask import request
 from typing import List, TypeVar
 
 
-
 class Auth():
     """ Module of Index views
     """
@@ -57,6 +56,5 @@ class Auth():
             return None
 
         session_name = getenv('SESSION_NAME')
-
 
         return request.cookies.get(session_name)
