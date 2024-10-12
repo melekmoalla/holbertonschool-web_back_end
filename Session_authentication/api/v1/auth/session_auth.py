@@ -33,3 +33,9 @@ class SessionAuth(Auth):
             return None
 
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None):
+        """
+        found any session
+        """
+        return self.user_id_for_session_id(self.session_cookie(request))
