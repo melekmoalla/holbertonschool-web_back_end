@@ -33,7 +33,3 @@ class SessionAuth(Auth):
             return None
 
         return self.user_id_by_session_id.get(session_id)
-
-
-        
-        
