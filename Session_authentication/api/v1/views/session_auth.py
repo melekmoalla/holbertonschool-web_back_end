@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-""" Module of Session authentication views
+"""
+Create a new Flask view that handles all routes for the Session authentication.
+
 """
 from flask import jsonify, abort, request, Response
 from api.v1.views import app_views
@@ -10,9 +12,8 @@ import os
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def session_auth_login():
-    """ POST /auth_session/login
-    Return
-        - Logged in user
+    """
+    Handles the session login and returns a Flask Response object.
     """
     email = request.form.get('email')
     password = request.form.get('password')
