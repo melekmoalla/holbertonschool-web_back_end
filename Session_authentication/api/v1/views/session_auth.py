@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module of Index views
+Module of session_auth
 """
 from flask import jsonify, abort, request, Response
 from api.v1.views import app_views
@@ -12,7 +12,7 @@ import os
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def session_auth_login():
     """
-    auth_session loginn
+    Handles the session login and returns a Flask Response object.
     """
     email = request.form.get('email')
     password = request.form.get('password')
