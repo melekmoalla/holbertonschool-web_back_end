@@ -2,7 +2,7 @@
 """ 
 Module of Index views
 """
-from flask import jsonify, abort, request
+from flask import jsonify, abort, request, Response
 from api.v1.views import app_views
 from models.user import User
 from api.v1.app import auth
@@ -10,7 +10,7 @@ import os
 
 
 @app_views.rout('/auth_session/login', methods=['POST'], strict_slashes=False)
-def auth_session():
+def auth_session() -> Response:
     """
     auth_session login
     """
