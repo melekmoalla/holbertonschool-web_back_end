@@ -9,8 +9,8 @@ from api.v1.app import auth
 import os
 
 
-@app_views.rout('/auth_session/login', methods=['POST'], strict_slashes=False)
-def auth_session() -> Response:
+@app.route('/api/v1/auth_session/login', methods=['POST'], strict_slashes=False)
+def session_auth_login() -> Response:
     """
     auth_session loginn
     """
