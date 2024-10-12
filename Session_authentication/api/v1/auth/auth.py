@@ -2,8 +2,12 @@
 
 """ Module of Index views
 """
+from os import getenv
+
 from flask import request
 from typing import List, TypeVar
+
+session_name = getenv('SESSION_NAME')
 
 
 class Auth():
@@ -45,3 +49,9 @@ class Auth():
         -> TypeVar('User'): that returns None - request will
         be the Flask request object"""
         return None
+
+    def session_cookie(self, request=None):
+        if request is None:
+            return None
+
+        return request.get(session_name)
