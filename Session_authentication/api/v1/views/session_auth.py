@@ -12,8 +12,9 @@ import os
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def session_auth_login():
-    """
-    Handles the session login and returns a Flask Response object.
+    """ POST /auth_session/login
+    Return
+        - Logged in user
     """
     email = request.form.get('email')
     password = request.form.get('password')
