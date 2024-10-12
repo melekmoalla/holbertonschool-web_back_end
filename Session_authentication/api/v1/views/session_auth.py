@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 
+"""
 Module of Index views
 """
 from flask import jsonify, abort, request, Response
@@ -10,7 +10,7 @@ import os
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
-def session_auth_login() -> Response:
+def session_auth_login():
     """
     auth_session loginn
     """
