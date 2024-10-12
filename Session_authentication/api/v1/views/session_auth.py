@@ -10,6 +10,9 @@ import os
 
 @app_views.rout('/auth_session/login', methods=['POST'], strict_slashes=False)
 def auth_session():
+    """
+    /auth_session/login
+    """
     email = request.form.get('email')
     password = request.form.get('password')
 
