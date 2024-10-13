@@ -67,15 +67,11 @@ class BasicAuth(Auth):
 
         user = User.search({"email": user_email})
 
-        try:
-            user = user[0]
-        except IndexError:
-            return None
-    
-        if not user.is_valid_password(user_pwd):
-            return None
+        for  users in user:
+            if not users.is_valid_password(user_pwd):
+                return user
+        return None
 
-        return user
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
