@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
 import bcrypt
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+
 """
 create a SQLAlchemy model named User
 for a database table named users
@@ -15,7 +17,7 @@ class User(Base):
     """
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    email = Column(String, nullable=True)
-    hased_password = Column(String, nullable=True)
-    session_id = Column(String)
-    reset_token = Column(String)
+    email = Column(String, nullable=False)
+    hased_password = Column(String, nullable=False)
+    session_id = Column(String, nullable=True)
+    reset_token = Column(String, nullable=True)
