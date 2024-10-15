@@ -21,3 +21,6 @@ class User(Base):
     hashed_password = Column(VARCHAR(250), nullable=False)
     session_id = Column(VARCHAR(250), nullable=True)
     reset_token = Column(VARCHAR(250), nullable=True)
+
+    def __repr__(self):
+        return "<User(id='{}', email='{}')>".format(self.id, self.email)
