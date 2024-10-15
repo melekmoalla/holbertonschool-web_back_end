@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-import bcrypt
-from sqlalchemy import Column, Integer, String, VARCHAR
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 """
