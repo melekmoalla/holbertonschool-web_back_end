@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-
 """
 create a SQLAlchemy model named User
 for a database table named users
 """
+
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
 
 Base = declarative_base()
 
