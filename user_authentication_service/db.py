@@ -55,7 +55,7 @@ class DB:
         except InvalidRequestError:
             raise InvalidRequestError
 
-    def update_user(self, user_id: int, **kwargs) -> str:
+    def update_user(self, user_id: int, **kwargs) -> None:
         """the DB.update_user method that takes as
         argument a required user_id integer and arbitrary
         keyword arguments, and returns None
@@ -66,4 +66,4 @@ class DB:
                 setattr(user, key, value)
             self._session.commit()
         except Exception:
-            raise ValueError
+            raise ValueError()
