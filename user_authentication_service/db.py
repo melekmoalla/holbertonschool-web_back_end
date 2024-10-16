@@ -60,9 +60,12 @@ class DB:
         argument a required user_id integer and arbitrary
         keyword arguments, and returns None
         """
+        valid_attributes = {'email', 'hashed_password'}
         try:
             user = self.find_user_by(id=user_id)
             for key, value in kwargs.items():
+                if key not in valid_attributes:
+                    raise ValueError()
                 setattr(user, key, value)
             self._session.commit()
         except Exception:
