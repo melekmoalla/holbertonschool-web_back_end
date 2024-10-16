@@ -40,7 +40,7 @@ class DB:
         self._session.commit()
         return new_user
 
-    def find_user_by(self, **kwargs: str) -> User:
+    def find_user_by(self, **kwargs) -> User:
         """
         he DB.find_user_by method. This method takes in
         arbitrary keyword arguments and returns the first
