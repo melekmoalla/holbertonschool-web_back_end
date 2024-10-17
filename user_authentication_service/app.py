@@ -2,7 +2,7 @@
 """
 Flask application to return a welcome message.
 """
-from flask import Flask, jsonify, request, abort, redirect
+from flask import Flask, jsonify, request, abort, redirect, make_response
 from auth import Auth
 from sqlalchemy.orm.exc import NoResultFound
 import os
@@ -67,13 +67,15 @@ def logout():
     """
     session_id = request.cookies.get('session_id')
     if not session_id:
-        return 403
+        return jsonify({"message": "Session ID is required"}), 403
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
-        redirect('/')
+        response = make_response(redirect('/'))
+        response.delete_cookie('session_id')
+        return response
     else:
-        return 403
+        return jsonify({"message": "Unauthorized"}), 403
 
 
 if __name__ == "__main__":
