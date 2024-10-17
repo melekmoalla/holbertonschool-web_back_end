@@ -105,7 +105,6 @@ class Auth:
         update the user’s reset_token database field.
         Return the token.
         """
-        user = self._db.find_user_by(email=email)
         try:
             user = self._db.find_user_by(email=email)
             reset_token = _generate_uuid()
