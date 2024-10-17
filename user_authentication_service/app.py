@@ -57,7 +57,7 @@ def login():
     return response
 
 
-@app.rout('/sessions', methods=['DELETE'])
+@app.route('/sessions', methods=['DELETE'])
 def logout():
     """
     Find the user with the requested session ID.
@@ -71,9 +71,8 @@ def logout():
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
-        response = make_response(redirect('/'))
-        response.delete_cookie('session_id')
-        return response
+        redirect('/')
+
     else:
         return jsonify({"message": "Unauthorized"}), 403
 
