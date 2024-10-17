@@ -55,11 +55,7 @@ class Auth:
             return False
 
     def _generate_uuid(self) -> str:
-        """
-        The function should return a string
-        representation of a new UUID. Use the
-        uuid module.
-        """
+        """Return a string representation of a new UUID."""
         return str(uuid.uuid4())
 
     def create_session(self, email: str) -> str:
@@ -91,3 +87,5 @@ class Auth:
             return user
         except NoResultFound:
             return None
+
+    def destroy_session()
