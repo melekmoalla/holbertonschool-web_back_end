@@ -84,8 +84,10 @@ class Auth:
         It takes a single session_id string argument and
         returns the corresponding User or None.
         """
-        user = self._db.find_user_by(session_id=session_id)
-        if session_id and user:
+        if session_id is None:
+            return None
+        try:
+            user = self._db.find_user_by(session_id=session_id)
             return user
-        else:
+        except NoResultFound:
             return None
