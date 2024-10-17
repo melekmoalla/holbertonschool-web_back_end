@@ -54,10 +54,27 @@ class Auth:
         except NoResultFound:
             return False
 
-    def _generate_uuid() -> str:
+    def _generate_uuid(self) -> str:
         """
         The function should return a string
         representation of a new UUID. Use the
         uuid module.
         """
-        return uuid.uuid4()
+        return str(uuid.uuid4())
+
+    def create_session(self, email: str) -> str:
+        """
+         It takes an email string argument and returns
+         the session ID as a string.
+            The method should find the user corresponding to
+            the email, generate a new UUID and store it
+            in the database as the user’s session_id, then
+            return the session ID.
+        """
+        try:
+            user = self._db.find_user_by(email=email)
+            session_id = self._generate_uuid()
+            user.session_id = session_id
+            return session_id
+        except NoResultFound:
+            return None
