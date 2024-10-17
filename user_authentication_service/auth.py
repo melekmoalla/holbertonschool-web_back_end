@@ -89,7 +89,7 @@ class Auth:
         except NoResultFound:
             return None
 
-    def destroy_session(self, user_id) -> None:
+    def destroy_session(self, user_id: str) -> None:
         """
         The method updates the corresponding user’s
         session ID to None
@@ -97,7 +97,7 @@ class Auth:
         user = self._db.find_user_by(id=user_id)
         user.session_id = None
 
-    def get_reset_password_token(self, email) -> str:
+    def get_reset_password_token(self, email: str) -> str:
         """
         Find the user corresponding to the email.
         If the user does not exist, raise a ValueError
