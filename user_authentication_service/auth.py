@@ -85,7 +85,7 @@ class Auth:
         returns the corresponding User or None.
         """
         user = self._db.find_user_by(session_id=session_id)
-        if session_id or user:
+        if session_id and user:
             return user
         else:
             return None
