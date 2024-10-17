@@ -60,4 +60,4 @@ class Auth:
         representation of a new UUID. Use the
         uuid module.
         """
-        return str(uuid.uuid4())
+        return uuid.uuid4()
