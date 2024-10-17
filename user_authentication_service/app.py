@@ -71,8 +71,9 @@ def logout():
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
-        redirect('/')
-
+        response = make_response(redirect('/'))
+        response.delete_cookie('session_id')
+        return response
     else:
         return jsonify({"message": "Unauthorized"}), 403
 
