@@ -94,6 +94,7 @@ def profile():
     else:
         abort(403)
 
+
 @app.route('/reset_password', methods=['POST'])
 def get_reset_password_token():
     """
@@ -110,7 +111,6 @@ def get_reset_password_token():
 
     except Exception:
         return jsonify({"message": "Email not registered"}), 403
-
 
 
 if __name__ == "__main__":
