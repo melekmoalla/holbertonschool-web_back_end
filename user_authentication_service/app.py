@@ -78,5 +78,22 @@ def logout():
         return jsonify({"message": "Unauthorized"}), 403
 
 
+@app.route('/profile', methods=['GET'])
+def profile():
+    """
+    The request is expected to contain a
+    session_id cookie. Use it to find the user.
+    If the user exist, respond with a 200 HTTP
+    """
+    session_id = request.form.get('session_id')
+    user = AUTH.get_user_from_session_id(session_id)
+    if user:
+        return jsonify({"email": user["email"]}), 200
+    else:
+        abort(403)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="4000")
+
+curl -XPOST localhost:4000/sessions -d 'email=bob@bob.com' -d 'password=mySuperPwd' -v
