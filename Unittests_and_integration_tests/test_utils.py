@@ -60,6 +60,10 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
+    """
+    Read about memoization and familiarize
+    yourself with the utils.memoize decorator.
+    """
 
     def test_memoize(self):
         """
