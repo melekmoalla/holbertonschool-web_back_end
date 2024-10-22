@@ -3,10 +3,11 @@
 Create a TestAccessNestedMap class that
 inherits from unittest.TestCase.
 """
+from unittest.mock import patch, Mock
+from utils import get_json
 import unittest
 from parameterized import parameterized, parameterized_class
 from utils import access_nested_map, get_json
-from unittest.mock import patch, Mock
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -42,7 +43,7 @@ class TestAccessNestedMap(unittest.TestCase):
 class TestGetJson(unittest.TestCase):
 
     @patch('utils.requests.get')
-    def test_get_json(self, mock_get) -> Mock:
+    def test_get_json(self, mock_get):
         """
         Define the TestGetJson(unittest.TestCase)
         class and implement the TestGetJson.test_get_json
@@ -60,7 +61,3 @@ class TestGetJson(unittest.TestCase):
             mock_get.assert_called_once_with(test_url)
             self.assertEqual(result, test_payload)
             mock_get.reset_mock()
-
-
-if __name__ == "__main__":
-    unittest.main()
