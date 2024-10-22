@@ -42,7 +42,7 @@ class TestAccessNestedMap(unittest.TestCase):
 class TestGetJson(unittest.TestCase):
 
     @patch('utils.requests.get')
-    def test_get_json(self, mock_get) -> Mock:
+    def test_get_json(self, mock_get):
         """
         Define the TestGetJson(unittest.TestCase)
         class and implement the TestGetJson.test_get_json
