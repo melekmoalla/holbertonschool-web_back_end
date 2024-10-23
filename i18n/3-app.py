@@ -42,7 +42,8 @@ def index():
     A single / route and an index.html template that simply
     displays the translated strings.
     """
-    return render_template('3-index.html')
+    return render_template('3-index.html', title=_('home_title'), header=_('home_header'))
+
 
 
 if __name__ == '__main__':
