@@ -9,6 +9,9 @@ babel = Babel(app)
 
 @app.route('/')
 def index():
+    """
+    a single / route and an index.html template that simply
+    """
     return render_template('0-index.html')
 
 
