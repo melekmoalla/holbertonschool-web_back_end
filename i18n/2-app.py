@@ -35,7 +35,7 @@ def index():
     """
     a single / route and an index.html template that simply
     """
-    return render_template('1-index.html')
+    return render_template('2-index.html')
 
 
 if __name__ == '__main__':
