@@ -15,7 +15,7 @@ users = {
 }
 
 
-class Config():
+class Config:
     """
     In order to configure available languages
     in our app, you will create a Config class
