@@ -10,6 +10,12 @@ app = Flask(__name__)
 
 
 class Config:
+    """
+    In order to configure available languages
+    in our app, you will create a Config class
+    hat has a LANGUAGES class attribute equal
+    to ["en", "fr"]
+    """
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
@@ -29,7 +35,7 @@ def index():
     """
     a single / route and an index.html template that simply
     """
-    return render_template('2-index.html')
+    return render_template('1-index.html')
 
 
 if __name__ == '__main__':
