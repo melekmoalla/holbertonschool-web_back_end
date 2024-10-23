@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
 """
-Flask application demonstrating Flask-Babel integration with user-specific
-locale settings based on login, URL parameters, and browser preferences.
+learn flask_babel
 """
-
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
 
-
 app = Flask(__name__)
 
-# Simulated user database
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
@@ -21,12 +17,10 @@ users = {
 
 class Config:
     """
-    Configuration class for language and timezone settings.
-
-    Attributes:
-        LANGUAGES (list): A list of supported languages ('en' and 'fr').
-        BABEL_DEFAULT_LOCALE (str): The default locale, set to 'en'.
-        BABEL_DEFAULT_TIMEZONE (str): The default timezone, set to 'UTC'.
+    In order to configure available languages
+    in our app, you will create a Config class
+    that has a LANGUAGES class attribute equal
+    to ["en", "fr"]
     """
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
@@ -36,15 +30,9 @@ class Config:
 app.config.from_object(Config)
 
 
-def get_locale() -> str:
+def get_locale():
     """
-    Determines the best language match for the user based on:
-    1. The 'locale' query parameter.
-    2. The user's stored locale in the global 'g.user' object.
-    3. The browser's accepted languages.
-
-    Returns:
-        str: The chosen language code (e.g., 'en' or 'fr').
+    Determine the best match with our supported languages.
     """
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
@@ -59,13 +47,8 @@ def get_locale() -> str:
 babel = Babel(app, locale_selector=get_locale)
 
 
-def get_user() -> dict | None:
-    """
-    Retrieves the user based on the 'login_as' query parameter.
-
-    Returns:
-        dict: User details if the user exists, None otherwise.
-    """
+def get_user():
+    """Get user based on login_as parameter."""
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
         user_id = int(user_id)
@@ -74,27 +57,23 @@ def get_user() -> dict | None:
 
 
 @app.before_request
-def before_request() -> None:
+def before_request():
     """
-    A function that runs before each request to set the global `g.user`
-    object to the currently logged-in user, if any.
+    before_request should use
+      get_user to find a user
+      if any, and set it as a
+      global on flask.g.user.
     """
     g.user = get_user()
 
 
 @app.route('/')
-def index() -> str:
-    """
-    The root route that renders the '5-index.html' template. It passes
-    the user's name to the template if the user is logged in.
+def index():
+    """A single / route and an index.html template."""
 
-    Returns:
-        str: The rendered HTML for the homepage.
-    """
     return render_template(
         '5-index.html',
-        username=g.user['name'] if g.user else None
-    )
+        username=g.user['name'] if g.user else None)
 
 
 if __name__ == '__main__':
