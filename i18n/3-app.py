@@ -42,6 +42,9 @@ class Config:
 
 
 app.config.from_object(Config)
+"""
+test the problme
+"""
 
 
 @app.route('/')
@@ -56,4 +59,4 @@ def index() -> str:
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
