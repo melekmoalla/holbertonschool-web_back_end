@@ -73,7 +73,7 @@ def index() -> str:
     """A single / route and an index.html template."""
 
     return render_template(
-        '3-index.html',
+        '5-index.html',
         username=g.user['name'] if g.user else None)
 
 
