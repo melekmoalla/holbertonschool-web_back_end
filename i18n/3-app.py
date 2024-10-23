@@ -7,22 +7,7 @@ from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
-class Config:
-    """
-    Configuration class for setting up language and timezone preferences.
-
-    Attributes:
-        LANGUAGES (list): A list of supported languages.
-        BABEL_DEFAULT_LOCALE (str): Default locale, set to 'en'.
-        BABEL_DEFAULT_TIMEZONE (str): Default timezone, set to 'UTC'.
-    """
-    LANGUAGES = ['en', 'fr']
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
-
-
 app = Flask(__name__)
-app.config.from_object(Config)
 
 
 def get_locale() -> str:
@@ -40,6 +25,23 @@ def get_locale() -> str:
 
 
 babel = Babel(app, locale_selector=get_locale)
+
+
+class Config:
+    """
+    Configuration class for setting up language and timezone preferences.
+
+    Attributes:
+        LANGUAGES (list): A list of supported languages.
+        BABEL_DEFAULT_LOCALE (str): Default locale, set to 'en'.
+        BABEL_DEFAULT_TIMEZONE (str): Default timezone, set to 'UTC'.
+    """
+    LANGUAGES = ['en', 'fr']
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+
+
+app.config.from_object(Config)
 
 
 @app.route('/')
