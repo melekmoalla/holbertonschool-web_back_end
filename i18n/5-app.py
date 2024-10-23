@@ -5,7 +5,6 @@ learn flask_babel
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
 
-app = Flask(__name__)
 
 """
 learn flask_babel
@@ -33,7 +32,7 @@ class Config:
 """
 learn flask_babel
 """
-app.config.from_object(Config)
+
 """
 learn flask_babel
 """
@@ -57,6 +56,8 @@ def get_locale() -> str:
 """
 learn flask_babel
 """
+app = Flask(__name__)
+app.config.from_object(Config)
 babel = Babel(app, locale_selector=get_locale)
 """
 learn flask_babel
