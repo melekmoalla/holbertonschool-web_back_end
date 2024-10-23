@@ -18,14 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
-#: 5-app.py:66 templates/5-index.html:10
-msgid "logged_in_as"
-msgstr "Vous êtes connecté en tant que %(username)s."
-
-#: 5-app.py:68 templates/5-index.html:11
-msgid "not_logged_in"
-msgstr "Vous n'êtes pas connecté."
-
 #: templates/3-index.html:6 templates/4-index.html:6 templates/5-index.html:6
 msgid "home_title"
 msgstr "Bienvenue chez Holberton"
@@ -33,4 +25,12 @@ msgstr "Bienvenue chez Holberton"
 #: templates/3-index.html:9 templates/4-index.html:9 templates/5-index.html:9
 msgid "home_header"
 msgstr "Bonjour monde!"
+
+#: 5-app.py:66 templates/5-index.html:10
+msgid "logged_in_as"
+msgstr "Vous êtes connecté en tant que %(username)s."
+
+#: 5-app.py:68 templates/5-index.html:11
+msgid "not_logged_in"
+msgstr "Vous n'êtes pas connecté."
 
