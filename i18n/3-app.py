@@ -25,13 +25,7 @@ class Config():
 
 
 def get_locale() -> str:
-    """
-    Determines the best language match for the user based on URL parameters
-    or the browser's accepted languages.
 
-    Returns:
-        str: The chosen language code (e.g., 'en' or 'fr').
-    """
     lang = request.args.get('lang')
     if lang in app.config['LANGUAGES']:
         return lang
