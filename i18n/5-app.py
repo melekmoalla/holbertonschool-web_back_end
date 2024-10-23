@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-learn flask_babel
-"""
+
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
 
