@@ -37,7 +37,7 @@ babel = Babel(app, locale_selector=get_locale)
 
 
 @app.route('/')
-def index() -> str:
+def index():
     """
     A single / route and an index.html template that simply
     displays the translated strings.
