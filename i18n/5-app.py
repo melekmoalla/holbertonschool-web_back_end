@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
-
+"""
+learn flask_babel
+"""
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
 
 app = Flask(__name__)
 
+"""
+learn flask_babel
+"""
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
@@ -14,14 +19,23 @@ users = {
 
 
 class Config:
-
+    """
+    In order to configure available languages
+    in our app, you will create a Config class
+    that has a LANGUAGES class attribute equal
+    to  ["en", "fr"]
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
-
+"""
+learn flask_babel
+"""
 app.config.from_object(Config)
-
+"""
+learn flask_babel
+"""
 
 def get_locale() -> str:
     """
@@ -37,9 +51,13 @@ def get_locale() -> str:
 
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
-
+"""
+learn flask_babel
+"""
 babel = Babel(app, locale_selector=get_locale)
-
+"""
+learn flask_babel
+"""
 
 def get_user() -> dict:
     """Get user based on login_as parameter."""
