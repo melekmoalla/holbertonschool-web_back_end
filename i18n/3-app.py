@@ -7,25 +7,7 @@ from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
-app = Flask(__name__, template_folder="templates")
-
-
-def get_locale() -> str:
-    """
-    Determines the best language match for the user based on URL parameters
-    or the browser's accepted languages.
-
-    Returns:
-        str: The chosen language code (e.g., 'en' or 'fr').
-    """
-    lang = request.args.get('lang')
-    if lang in app.config['LANGUAGES']:
-        return lang
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-
-babel = Babel(app, locale_selector=get_locale)
-
+app = Flask(__name__)
 
 class Config:
     """
@@ -41,8 +23,20 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-app.config.from_object(Config)
+def get_locale() -> str:
+    """
+    Determines the best language match for the user based on URL parameters
+    or the browser's accepted languages.
 
+    Returns:
+        str: The chosen language code (e.g., 'en' or 'fr').
+    """
+
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+babel = Babel(app, locale_selector=get_locale)
+app.config.from_object(Config)
 
 @app.route('/')
 def index() -> str:
