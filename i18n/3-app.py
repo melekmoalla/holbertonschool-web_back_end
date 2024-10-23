@@ -44,7 +44,6 @@ class Config:
 app.config.from_object(Config)
 
 
-
 @app.route('/')
 def index() -> str:
     """
@@ -54,7 +53,6 @@ def index() -> str:
         str: The rendered HTML for the homepage.
     """
     return render_template('3-index.html')
-
 
 
 if __name__ == '__main__':
