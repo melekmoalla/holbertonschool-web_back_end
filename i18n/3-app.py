@@ -27,7 +27,7 @@ def get_locale() -> str:
 babel = Babel(app, locale_selector=get_locale)
 
 
-class Config:
+class Config(object):
     """
     Configuration class for setting up language and timezone preferences.
 
