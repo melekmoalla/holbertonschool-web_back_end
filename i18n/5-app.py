@@ -89,7 +89,9 @@ def index() -> str:
     Returns:
         str: The rendered HTML for the homepage.
     """
-    return render_template('5-index.html', username=g.user['name'] if g.user else None)
+    return render_template(
+        '5-index.html',
+        username=g.user['name'] if g.user else None)
 
 
 if __name__ == '__main__':
