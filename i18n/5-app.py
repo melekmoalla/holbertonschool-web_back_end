@@ -16,17 +16,14 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+app = Flask(__name__)
 
-class Config:
-    """
-    In order to configure available languages
-    in our app, you will create a Config class
-    that has a LANGUAGES class attribute equal
-    to  ["en", "fr"]
-    """
-    LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTC"
+
+app.config['LANGUAGES'] = ['en', 'fr']
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
+
+
 
 
 """
@@ -56,8 +53,6 @@ def get_locale():
 """
 learn flask_babel
 """
-app = Flask(__name__)
-app.config.from_object(Config)
 babel = Babel(app, locale_selector=get_locale)
 """
 learn flask_babel
