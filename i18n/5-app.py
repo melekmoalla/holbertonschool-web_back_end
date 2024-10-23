@@ -29,6 +29,7 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
 """
 learn flask_babel
 """
@@ -36,6 +37,7 @@ app.config.from_object(Config)
 """
 learn flask_babel
 """
+
 
 def get_locale() -> str:
     """
@@ -51,6 +53,7 @@ def get_locale() -> str:
 
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+
 """
 learn flask_babel
 """
@@ -58,6 +61,7 @@ babel = Babel(app, locale_selector=get_locale)
 """
 learn flask_babel
 """
+
 
 def get_user() -> dict:
     """Get user based on login_as parameter."""
