@@ -1,31 +1,37 @@
 #!/usr/bin/env python3
 """
-learn flask_babel
+Flask application with Babel integration for language support.
 """
+
 from flask import Flask, render_template, request
 from flask_babel import Babel
-
-app = Flask(__name__)
 
 
 class Config:
     """
-    In order to configure available languages
-    in our app, you will create a Config class
-    that has a LANGUAGES class attribute equal
-    to ["en", "fr"]
+    Configuration class for setting up language and timezone preferences.
+
+    Attributes:
+        LANGUAGES (list): A list of supported languages.
+        BABEL_DEFAULT_LOCALE (str): Default locale, set to 'en'.
+        BABEL_DEFAULT_TIMEZONE (str): Default timezone, set to 'UTC'.
     """
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
+app = Flask(__name__)
 app.config.from_object(Config)
 
 
 def get_locale() -> str:
     """
-    Determine the best match with our supported languages.
+    Determines the best language match for the user based on URL parameters
+    or the browser's accepted languages.
+
+    Returns:
+        str: The chosen language code (e.g., 'en' or 'fr').
     """
     lang = request.args.get('lang')
     if lang in app.config['LANGUAGES']:
@@ -37,10 +43,12 @@ babel = Babel(app, locale_selector=get_locale)
 
 
 @app.route('/')
-def index():
+def index() -> str:
     """
-    A single / route and an index.html template that simply
-    displays the translated strings.
+    Renders the index.html template.
+
+    Returns:
+        str: The rendered HTML for the homepage.
     """
     return render_template('3-index.html')
 
