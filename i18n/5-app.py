@@ -63,7 +63,7 @@ learn flask_babel
 """
 
 
-def get_user() -> dict:
+def get_user() -> str:
     """Get user based on login_as parameter."""
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
