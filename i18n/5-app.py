@@ -14,12 +14,7 @@ users = {
 
 
 class Config:
-    """
-    In order to configure available languages
-    in our app, you will create a Config class
-    that has a LANGUAGES class attribute equal
-    to  ["en", "fr"]
-    """
+
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
