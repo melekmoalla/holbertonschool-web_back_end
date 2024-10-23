@@ -27,7 +27,7 @@ def get_locale() -> str:
 babel = Babel(app, locale_selector=get_locale)
 
 
-class Config(object):
+class Config:
     """
     Configuration class for setting up language and timezone preferences.
 
@@ -42,9 +42,7 @@ class Config(object):
 
 
 app.config.from_object(Config)
-"""
-test the problme
-"""
+
 
 
 @app.route('/')
@@ -57,6 +55,10 @@ def index() -> str:
     """
     return render_template('3-index.html')
 
+@babel.localeselector
+def get_locale():
+    """ to determine the best match with our supported languages """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 if __name__ == '__main__':
     app.run()
