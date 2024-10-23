@@ -9,6 +9,7 @@ from flask_babel import Babel
 
 app = Flask(__name__)
 
+
 class Config:
     """
     Configuration class for setting up language and timezone preferences.
@@ -39,6 +40,7 @@ def get_locale() -> str:
 
 babel = Babel(app, locale_selector=get_locale)
 app.config.from_object(Config)
+
 
 @app.route('/')
 def index() -> str:
