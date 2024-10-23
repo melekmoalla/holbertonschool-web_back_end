@@ -9,19 +9,9 @@ from flask_babel import Babel
 app = Flask(__name__)
 
 
-class Config:
-    """
-    In order to configure available languages
-    in our app, you will create a Config class
-    hat has a LANGUAGES class attribute equal
-    to ["en", "fr"]
-    """
-    LANGUAGES = ['en', 'fr']
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
-
-
-app.config.from_object(Config)
+app.config['LANGUAGES'] = ['en', 'fr']
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 
 
 def get_locale():
