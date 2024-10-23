@@ -38,7 +38,7 @@ learn flask_babel
 """
 
 
-def get_locale() -> str:
+def get_locale():
     """
     Determine the best match with our supported languages.
     """
