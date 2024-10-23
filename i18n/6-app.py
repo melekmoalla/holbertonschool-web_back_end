@@ -35,12 +35,9 @@ def get_locale():
     Determine the best match with our supported languages.
     """
     locale = request.args.get('locale')
-    if locale in  app.config['LANGUAGES']:
+    if locale in app.config['LANGUAGES']:
         return locale
 
-    lang = request.args.get('lang')
-    if lang in app.config['LANGUAGES']:
-        return lang
     if g.user and g.user.get('locale') in app.config['LANGUAGES']:
         return g.user['locale']
 
@@ -69,7 +66,7 @@ def before_request():
     """
     g.user = get_user()
 
-        
+
 @app.route('/')
 def index():
     """A single / route and an index.html template."""
