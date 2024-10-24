@@ -65,7 +65,7 @@ class TestMemoize(unittest.TestCase):
     yourself with the utils.memoize decorator.
     """
 
-    def test_memoize(self):
+    def test_memoize(self) -> None:
         """
         Use unittest.mock.patch to mock a_method. Test that
          when calling a_property twice, the correct result
