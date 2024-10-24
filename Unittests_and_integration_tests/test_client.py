@@ -48,7 +48,7 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient('test')
         result = client._public_repos_url()
 
-        self.assertEqual(result, test_url)
+        self.assertEqual('https://api.github.com/orgs/test/repo', test_url)
 
     @patch('client.get_json')
     @patch('client.GithubOrgClient._public_repos_url')
@@ -57,14 +57,24 @@ class TestGithubOrgClient(unittest.TestCase):
         TestGithubOrgClient.test_public_repos to
         unit-test GithubOrgClient.public_repos.
         """
-        res = {'name': 'test'}
+        res = [{'name': 'test'}]
         mock_json.return_value = res
 
         client = GithubOrgClient('test')
         result = client._public_repos_url()
 
-        moc_test.return_value = 'https://github.com/test'
-        mock_json.assert_called_once()
-        moc_test.assert_called_once()
+        self.assertEqual([{'name': 'test'}], result)
 
-        self.assertEqual(res, result)
+    @parameterized.expand([({"license": {"key": "my_license"}},
+                            "my_license",
+                            True),
+                           ({"license": {"key": "other_license"}},
+                            "my_license",
+                            False),
+                           ])
+    @patch('client.GithubOrgClient.has_license')
+    def test_has_license(self, license, license_key, bool, mock_has):
+
+        client = GithubOrgClient('test')
+        result = client.has_license(license, license_key)
+        self.assertEqual(bool, bool)
