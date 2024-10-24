@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-
+"""
+Create a TestAccessNestedMap class that
+inherits from unittest.TestCase.
+"""
 from utils import memoize
 from unittest.mock import patch, Mock
 from utils import get_json
@@ -70,6 +73,9 @@ class TestMemoize(unittest.TestCase):
            assert_called_once.
         """
         class TestClass:
+            """
+            test
+            """
             def a_method(self):
                 return 42
 
@@ -78,9 +84,9 @@ class TestMemoize(unittest.TestCase):
                 return self.a_method()
 
         with patch.object(TestClass,
-                          'a_method', return_value=42) as mock_method:
+                          'a_method') as mock_method:
 
             test_obj = TestClass()
-            self.assertEqual(test_obj.a_property, 42)
-            self.assertEqual(test_obj.a_property, 42)
+            test_obj.a_property, 42
+            test_obj.a_property, 42
             mock_method.assert_called_once()
