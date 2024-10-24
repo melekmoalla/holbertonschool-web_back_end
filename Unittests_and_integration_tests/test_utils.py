@@ -9,11 +9,6 @@ from utils import get_json
 import unittest
 from parameterized import parameterized, parameterized_class
 from utils import access_nested_map, get_json
-from utils import (
-    access_nested_map,
-    get_json,
-    memoize,
-)
 
 
 class TestAccessNestedMap(unittest.TestCase):
