@@ -80,10 +80,20 @@ class TestMemoize(unittest.TestCase):
             """
 
             def a_method(self):
+                """
+                Read about memoization and familiarize
+                yourself with the utils.memoize
+                decorator.
+                """
                 return 42
 
             @memoize
             def a_property(self):
+                """
+                Read about memoization and familiarize
+                yourself with the utils.memoize
+                decorator.
+                """
                 return self.a_method()
 
         with patch.object(
