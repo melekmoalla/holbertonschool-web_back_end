@@ -80,13 +80,24 @@ class TestMemoize(unittest.TestCase):
             """
 
             def a_method(self):
+                """
+                Read about memoization and familiarize
+                yourself with the utils.memoize
+                decorator.
+                """
                 return 42
 
             @memoize
             def a_property(self):
+                """
+                Read about memoization and familiarize
+                yourself with the utils.memoize
+                decorator.
+                """
                 return self.a_method()
 
-        with patch.object(TestClass,'a_method',return_value=42) as mock_method:
+        with patch.object(
+                TestClass, 'a_method', return_value=42) as mock_method:
 
             test_obj = TestClass()
             self.assertEqual(test_obj.a_property, 42)
