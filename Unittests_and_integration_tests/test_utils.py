@@ -73,7 +73,11 @@ class TestMemoize(unittest.TestCase):
            assert_called_once.
         """
         class TestClass:
-
+            """
+            Read about memoization and familiarize
+            yourself with the utils.memoize
+            decorator.
+            """
 
             def a_method(self):
                 return 42
