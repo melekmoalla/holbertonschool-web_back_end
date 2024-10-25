@@ -49,7 +49,8 @@ def get_user():
     login_as was not passed.
     """
     user = request.args.get('login_as')
-    if user and user in users:
+    if user and user.isdigit():
+        user = int(user)
         return users[user]
     else:
         return None
