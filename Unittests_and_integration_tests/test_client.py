@@ -9,6 +9,7 @@ from parameterized import parameterized
 from client import GithubOrgClient
 
 
+
 class TestGithubOrgClient(unittest.TestCase):
     """
     TestGithubOrgClient
@@ -80,3 +81,21 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient('test')
         result = client.has_license(license, license_key)
         self.assertEqual(result, result)
+
+import fixtures
+from parameterized import parameterized_class
+
+@parameterized_class([
+    {"org_payload": True, "repos_payload": True,
+     "expected_repos": True, "apache2_repos": True}
+])
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+
+    @classmethod
+    def setupClass():
+        pass
+
+        
+    @classmethod
+    def tearDownClass():
+        pass

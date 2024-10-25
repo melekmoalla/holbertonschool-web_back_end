@@ -9,6 +9,7 @@ from utils import get_json
 import unittest
 from parameterized import parameterized, parameterized_class
 from utils import access_nested_map, get_json
+from fixtures import TEST_PAYLOAD
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -87,3 +88,4 @@ class TestMemoize(unittest.TestCase):
             self.assertEqual(test_obj.a_property, 42)
             self.assertEqual(test_obj.a_property, 42)
             mock_method.assert_called_once()
+
