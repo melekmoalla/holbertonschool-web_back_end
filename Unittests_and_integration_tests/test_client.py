@@ -92,10 +92,13 @@ from parameterized import parameterized_class
 class TestIntegrationGithubOrgClient(unittest.TestCase):
 
     @classmethod
-    def setupClass():
-        pass
+    def setUpClass(cls):
+        """Start patching requests.get with fixtures."""
+        cls.get_patcher = patch('requests.get')
+        cls.mock_get = cls.get_patcher.start()
 
         
     @classmethod
-    def tearDownClass():
-        pass
+    def tearDownClass(cls):
+        """Stop patcher."""
+        cls.get_patcher.stop()
