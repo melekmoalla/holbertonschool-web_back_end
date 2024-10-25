@@ -3,7 +3,7 @@
 learn flask_babel
 """
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, _
+from flask_babel import Babel
 
 app = Flask(__name__)
 
@@ -14,6 +14,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 class Config:
     """
     In order to configure available languages
@@ -22,7 +23,7 @@ class Config:
     to ["en", "fr"]
     """
     LANGUAGES = ['en', 'fr']
-    BABEL_DEFAULT_LOCALE = 'fr'
+    BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
@@ -40,6 +41,7 @@ def get_locale():
 
 
 babel = Babel(app, locale_selector=get_locale)
+
 
 def get_user():
     """
@@ -64,6 +66,7 @@ def before_request():
     other functions.
     """
     g.user = get_user()
+
 
 @app.route('/')
 def index():
