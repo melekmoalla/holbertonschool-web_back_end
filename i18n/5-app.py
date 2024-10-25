@@ -6,12 +6,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
 
 
-users = {
-    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
-    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
-    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
-    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
-}
+
 
 
 class Config:
@@ -51,6 +46,12 @@ def get_user():
     dictionary or None if the ID cannot be found or
     if login_as was not passed.
     """
+    users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+    }
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
         user_id = int(user_id)
