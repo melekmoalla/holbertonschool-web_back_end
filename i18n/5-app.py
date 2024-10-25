@@ -7,7 +7,12 @@ from flask_babel import Babel
 
 app = Flask(__name__)
 
-
+users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+}
 
 class Config:
     """
@@ -43,7 +48,7 @@ def index():
     A single / route and an index.html template that simply
     displays the translated strings.
     """
-    return render_template('5-index.html')
+    return render_template('4-index.html')
 
 
 if __name__ == '__main__':
