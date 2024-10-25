@@ -48,12 +48,12 @@ def get_user():
     if the ID cannot be found or if
     login_as was not passed.
     """
-    user = request.args.get('login_as')
-    if user and user.isdigit():
-        user = int(user)
-        return users[user]
-    else:
-        return None
+    user_id = request.args.get('login_as')
+    if user_id and user_id.isdigit():
+        user_id = int(user_id)
+        return users.get(user_id)
+    return None
+
 
 @app.before_request
 def before_request():
