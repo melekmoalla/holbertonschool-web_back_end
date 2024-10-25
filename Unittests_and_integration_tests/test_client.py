@@ -89,17 +89,13 @@ class TestGithubOrgClient(unittest.TestCase):
      "expected_repos": True, "apache2_repos": True}
 ])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
-    """
-    Create the TestIntegrationGithubOrgClient(unittest.TestCase)
-    class and implement the setUpClass and tearDownClass which
-    are part of the unittest.TestCase API.
-    """
+    """Integration test for GithubOrgClient"""
+
     @classmethod
     def setUpClass(cls):
         """Start patching requests.get with fixtures."""
         cls.get_patcher = patch('requests.get')
         cls.mock_get = cls.get_patcher.start()
-        
 
     @classmethod
     def tearDownClass(cls):
