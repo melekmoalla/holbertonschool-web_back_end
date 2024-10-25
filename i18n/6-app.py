@@ -47,7 +47,7 @@ def get_locale():
 babel = Babel(app, locale_selector=get_locale)
 
 
-def get_user()-> dict:
+def get_user() -> dict:
     """Get user based on login_as parameter."""
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
