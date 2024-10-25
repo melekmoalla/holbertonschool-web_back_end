@@ -42,6 +42,12 @@ def get_locale():
 babel = Babel(app, locale_selector=get_locale)
 
 def get_user():
+    """
+    Define a get_user function that
+    returns a user dictionary or None
+    if the ID cannot be found or if
+    login_as was not passed.
+    """
     user = request.args.get('login_as')
     if user and user in users:
         return users[2]
@@ -50,6 +56,12 @@ def get_user():
 
 @app.before_request
 def before_request():
+    """
+    Define a before_request function and
+    use the app.before_request decorator
+    to make it be executed before all
+    other functions.
+    """
     g.user = get_user()
 
 @app.route('/')
