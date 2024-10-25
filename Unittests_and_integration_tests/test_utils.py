@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-
+"""
+Create a TestAccessNestedMap class that
+inherits from unittest.TestCase.
+"""
 from utils import memoize
 from unittest.mock import patch, Mock
 from utils import get_json
@@ -39,7 +42,7 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-
+    """Start patching requests.get with fixtures."""
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
