@@ -82,3 +82,25 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient('test')
         result = client.has_license(license, license_key)
         self.assertEqual(result, result)
+
+
+@parameterized_class([
+    {"org_payload": True, "repos_payload": True,
+     "expected_repos": True, "apache2_repos": True}
+])
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """
+    Create the TestIntegrationGithubOrgClient(unittest.TestCase)
+    class and implement the setUpClass and tearDownClass which
+    are part of the unittest.TestCase API.
+    """
+    @classmethod
+    def setUpClass(cls):
+        """Start patching requests.get with fixtures."""
+        cls.get_patcher = patch('requests.get')
+        cls.mock_get = cls.get_patcher.start()
+
+    @classmethod
+    def tearDownClass(cls):
+        """stop patching requests.get with fixtures."""
+        cls.get_patcher.stop()
