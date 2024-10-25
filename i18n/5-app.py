@@ -29,14 +29,6 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-"""
-learn flask_babel
-"""
-
-"""
-learn flask_babel
-"""
-
 
 def get_locale():
     """
