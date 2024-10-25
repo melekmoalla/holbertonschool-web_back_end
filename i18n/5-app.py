@@ -88,7 +88,9 @@ def index():
     A single / route and an index.html template that simply
     displays the translated strings.
     """
-    return render_template('5-index.html')
+    return render_template(
+        '5-index.html',
+        username=g.user['name'] if g.user else None)
 
 
 if __name__ == '__main__':
