@@ -38,7 +38,7 @@ learn flask_babel
 """
 
 
-def get_locale() -> str:
+def get_locale():
     """
     Determine the best match with our supported languages.
     """
@@ -58,7 +58,7 @@ app.config.from_object(Config)
 babel = Babel(app, locale_selector=get_locale)
 
 
-def get_user() -> None:
+def get_user():
     """Define a get_user function that returns a user
     dictionary or None if the ID cannot be found or
     if login_as was not passed.
@@ -72,7 +72,7 @@ def get_user() -> None:
 
 
 @app.before_request
-def before_request() -> None:
+def before_request():
     """
     before_request should use
       get_user to find a user
@@ -83,7 +83,7 @@ def before_request() -> None:
 
 
 @app.route('/')
-def index() -> str:
+def index():
     """A single / route and an index.html template."""
 
     return render_template(
