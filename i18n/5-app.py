@@ -29,7 +29,6 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-
 def get_locale():
     """
     Determine the best match with our supported languages.
