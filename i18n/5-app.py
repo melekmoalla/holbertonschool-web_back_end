@@ -6,9 +6,6 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
 
 
-"""
-learn flask_babel
-"""
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
@@ -79,9 +76,7 @@ def index():
     A single / route and an index.html template that simply
     displays the translated strings.
     """
-    return render_template(
-        '5-index.html',
-        username=g.user['name'] if g.user else None)
+    return render_template("5-index.html")
 
 
 if __name__ == '__main__':
