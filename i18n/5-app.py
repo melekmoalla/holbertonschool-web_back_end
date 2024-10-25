@@ -51,7 +51,6 @@ def get_user():
     dictionary or None if the ID cannot be found or
     if login_as was not passed.
     """
-
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
         user_id = int(user_id)
