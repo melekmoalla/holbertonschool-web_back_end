@@ -50,7 +50,7 @@ def get_user():
     """
     user = request.args.get('login_as')
     if user and user in users:
-        return users[2]
+        return users[user]
     else:
         return None
 
