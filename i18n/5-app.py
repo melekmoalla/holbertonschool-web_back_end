@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-learn flask_babel
+In order to configure available languages
+in our app, you will create a Config class
+that has a LANGUAGES class attribute equal
+to  ["en", "fr"]
 """
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
-app = Flask(__name__)
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -20,35 +22,36 @@ class Config:
     In order to configure available languages
     in our app, you will create a Config class
     that has a LANGUAGES class attribute equal
-    to ["en", "fr"]
+    to  ["en", "fr"]
     """
-    LANGUAGES = ['en', 'fr']
-    BABEL_DEFAULT_LOCALE = 'fr'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
-
-
-app.config.from_object(Config)
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 def get_locale():
     """
     Determine the best match with our supported languages.
     """
-    lang = request.args.get('locale')
+    locale = request.args.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
+    lang = request.args.get('lang')
     if lang in app.config['LANGUAGES']:
         return lang
+
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
+app = Flask(__name__)
+app.config.from_object(Config)
 babel = Babel(app, locale_selector=get_locale)
 
 
 def get_user():
-    """
-    Define a get_user function that
-    returns a user dictionary or None
-    if the ID cannot be found or if
-    login_as was not passed.
+    """Define a get_user function that returns a user
+    dictionary or None if the ID cannot be found or
+    if login_as was not passed.
     """
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
@@ -60,10 +63,10 @@ def get_user():
 @app.before_request
 def before_request():
     """
-    Define a before_request function and
-    use the app.before_request decorator
-    to make it be executed before all
-    other functions.
+    before_request should use
+      get_user to find a user
+      if any, and set it as a
+      global on flask.g.user.
     """
     g.user = get_user()
 
