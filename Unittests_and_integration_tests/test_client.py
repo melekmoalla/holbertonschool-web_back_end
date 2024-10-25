@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""
-In a new test_client.py file, declare the
-TestGithubOrgClient(unittest.TestCase)
-"""
+
 import fixtures
 from parameterized import parameterized_class
 import unittest
