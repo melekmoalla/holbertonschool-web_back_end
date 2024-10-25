@@ -33,7 +33,6 @@ def get_locale():
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
-
     lang = request.args.get('lang')
     if lang in app.config['LANGUAGES']:
         return lang
@@ -51,7 +50,6 @@ def get_user():
     dictionary or None if the ID cannot be found or
     if login_as was not passed.
     """
-
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
         user_id = int(user_id)
