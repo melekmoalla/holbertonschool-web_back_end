@@ -14,6 +14,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 class Config:
     """
     In order to configure available languages
@@ -41,6 +42,7 @@ def get_locale():
 
 babel = Babel(app, locale_selector=get_locale)
 
+
 def get_user():
     """
     Define a get_user function that
@@ -55,6 +57,7 @@ def get_user():
     else:
         return None
 
+
 @app.before_request
 def before_request():
     """
@@ -64,6 +67,7 @@ def before_request():
     other functions.
     """
     g.user = get_user()
+
 
 @app.route('/')
 def index():
