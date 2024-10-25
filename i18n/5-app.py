@@ -53,19 +53,17 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-"""
-learn flask_babel
-"""
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app, locale_selector=get_locale)
-"""
-learn flask_babel
-"""
 
 
 def get_user() -> None:
-    """Get user based on login_as parameter."""
+    """Define a get_user function that returns a user
+    dictionary or None if the ID cannot be found or
+    if login_as was not passed.
+    """
+
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
         user_id = int(user_id)
