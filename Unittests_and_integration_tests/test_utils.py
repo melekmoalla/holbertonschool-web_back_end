@@ -12,7 +12,9 @@ from utils import access_nested_map, get_json
 
 
 class TestAccessNestedMap(unittest.TestCase):
-    """Start patching requests.get with fixtures."""
+    """Create a TestAccessNestedMap class that
+    inherits from unittest.TestCase.
+    """
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
@@ -42,7 +44,9 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-    """Start patching requests.get with fixtures."""
+    """Define the TestGetJson(unittest.TestCase) class and
+    implement the TestGetJson.test_get_json method to test
+    that utils.get_json returns the expected result."""
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
