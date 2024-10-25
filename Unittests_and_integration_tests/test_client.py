@@ -84,6 +84,10 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, result)
 
 
+@parameterized_class([
+    {"org_payload": True, "repos_payload": True,
+     "expected_repos": True, "apache2_repos": True}
+])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """
     Create the TestIntegrationGithubOrgClient(unittest.TestCase)
