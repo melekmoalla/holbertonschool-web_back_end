@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-
+"""
+In a new test_client.py file, declare the
+TestGithubOrgClient(unittest.TestCase)
+"""
 import fixtures
 from parameterized import parameterized_class
 import unittest
@@ -81,10 +84,7 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, result)
 
 
-@parameterized_class([
-    {"org_payload": True, "repos_payload": True,
-     "expected_repos": True, "apache2_repos": True}
-])
+
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """
     Create the TestIntegrationGithubOrgClient(unittest.TestCase)
