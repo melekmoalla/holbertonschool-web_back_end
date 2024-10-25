@@ -84,7 +84,6 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, result)
 
 
-
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """
     Create the TestIntegrationGithubOrgClient(unittest.TestCase)
