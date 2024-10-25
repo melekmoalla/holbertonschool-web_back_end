@@ -84,11 +84,11 @@ def before_request():
 
 @app.route('/')
 def index():
-    """A single / route and an index.html template."""
-
-    return render_template(
-        '5-index.html',
-        username=g.user['name'] if g.user else None)
+    """
+    A single / route and an index.html template that simply
+    displays the translated strings.
+    """
+    return render_template('4-index.html')
 
 
 if __name__ == '__main__':
