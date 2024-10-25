@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""
-Create a TestAccessNestedMap class that
-inherits from unittest.TestCase.
-"""
+
 from utils import memoize
 from unittest.mock import patch, Mock
 from utils import get_json
