@@ -30,7 +30,7 @@ class Config:
 app.config.from_object(Config)
 
 
-def get_locale() -> dict:
+def get_locale():
     """
     Define a get_user function that returns a
     Define a get_user function that returns a
@@ -47,7 +47,7 @@ def get_locale() -> dict:
 babel = Babel(app, locale_selector=get_locale)
 
 
-def get_user():
+def get_user()-> dict:
     """Get user based on login_as parameter."""
     user_id = request.args.get('login_as')
     if user_id and user_id.isdigit():
