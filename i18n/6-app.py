@@ -30,11 +30,10 @@ class Config:
 app.config.from_object(Config)
 
 
-def get_locale() -> str:
+def get_locale() -> dict:
     """
     Define a get_user function that returns a
-    user dictionary or None if the ID cannot
-    be found or if login_as was not passed.
+    Define a get_user function that returns a
     """
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
