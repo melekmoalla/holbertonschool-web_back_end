@@ -30,7 +30,7 @@ class Config:
 app.config.from_object(Config)
 
 
-def get_locale():
+def get_locale() -> str:
     """
     Determine the best match with our supported languages.
     """
