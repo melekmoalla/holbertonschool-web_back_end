@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-0x0B_redis_basic file
-"""
+
 import redis
 import uuid
 
