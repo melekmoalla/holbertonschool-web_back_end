@@ -33,7 +33,7 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
-def replay(method: Callable):
+def replay(method: Callable)-> None:
     method_name = method.__qualname__
     cache_instance = method.__self__
     input_key = f"{method_name}:inputs"
