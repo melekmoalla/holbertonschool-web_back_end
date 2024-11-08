@@ -33,7 +33,7 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
-def replay(method: Callable)-> None:
+def replay(method: Callable):
     method_name = method.__qualname__
     cache_instance = method.__self__
     input_key = f"{method_name}:inputs"
@@ -60,6 +60,7 @@ class Cache:
     """
     0x0B_redis_basic file
     """
+
     def __init__(self):
         self._redis = redis.Redis()
         self._redis.flushdb()
