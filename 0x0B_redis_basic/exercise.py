@@ -70,6 +70,14 @@ def replay(method: Callable):
     input_key = f"{method_name}:inputs"
     output_key = f"{method_name}:outputs"
 
+    call_count = cache_instance._redis.get(method_name)
+    if call_count:
+        call_count = int(call_count)
+    else:
+        call_count = 0
+
+    print(f"{method_name} was called {call_count} times:")
+
     inputs = cache_instance._redis.lrange(input_key, 0, -1)
     outputs = cache_instance._redis.lrange(output_key, 0, -1)
 
