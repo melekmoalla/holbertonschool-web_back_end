@@ -33,6 +33,29 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
+def replay(method: Callable):
+    method_name = method.__qualname__
+    cache_instance = method.__self__
+    input_key = f"{method_name}:inputs"
+    output_key = f"{method_name}:outputs"
+
+    call_count = cache_instance._redis.get(method_name)
+    if call_count:
+        call_count = int(call_count)
+    else:
+        call_count = 0
+
+    print(f"{method_name} was called {call_count} times:")
+
+    inputs = cache_instance._redis.lrange(input_key, 0, -1)
+    outputs = cache_instance._redis.lrange(output_key, 0, -1)
+
+    for input_args, output in zip(inputs, outputs):
+        input_str = input_args.decode("utf-8")
+        output_str = output.decode("utf-8")
+        print(f"{method_name}(*{input_str}) -> {output_str}")
+
+
 class Cache:
     def __init__(self):
         self._redis = redis.Redis()
@@ -70,26 +93,3 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
-
-
-def replay(method: Callable):
-    method_name = method.__qualname__
-    cache_instance = method.__self__
-    input_key = f"{method_name}:inputs"
-    output_key = f"{method_name}:outputs"
-
-    call_count = cache_instance._redis.get(method_name)
-    if call_count:
-        call_count = int(call_count)
-    else:
-        call_count = 0
-
-    print(f"{method_name} was called {call_count} times:")
-
-    inputs = cache_instance._redis.lrange(input_key, 0, -1)
-    outputs = cache_instance._redis.lrange(output_key, 0, -1)
-
-    for input_args, output in zip(inputs, outputs):
-        input_str = input_args.decode("utf-8")
-        output_str = output.decode("utf-8")
-        print(f"{method_name}(*{input_str}) -> {output_str}")
