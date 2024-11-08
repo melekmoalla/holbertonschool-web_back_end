@@ -75,6 +75,7 @@ def replay(method: Callable):
     else:
         call_count = 0
 
+    print(f"{method_name} was called {call_count} times:")
 
     inputs = cache_instance._redis.lrange(input_key, 0, -1)
     outputs = cache_instance._redis.lrange(output_key, 0, -1)
