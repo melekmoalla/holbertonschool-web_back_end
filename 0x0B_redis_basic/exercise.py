@@ -24,9 +24,9 @@ class Cache:
         return fn(data) if fn else data
     
     def get_str(self, key: str) -> Optional[str]:
-
-        return self.get(key, fn=lambda d: d.decode("utf-8"))
+        data = self._redis.get(key)
+        return self._decode_utf8(data) if data else None
 
     def get_int(self, key: str) -> Optional[int]:
-        
-        return self.get(key, fn=int)
+        data = self._redis.get(key)
+        return int(data) if data else None
