@@ -1,5 +1,4 @@
--- Calculate the average score for the user from the corrections table
--- Update the user's average score in the users table
+-- Write a SQL script that creates a trigger that resets the attribute valid_email only when the email has been changed.
 DELIMITER $$
 
 CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
