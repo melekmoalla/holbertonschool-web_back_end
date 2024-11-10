@@ -1,4 +1,4 @@
- -- Calculate the average score for the user from the corrections table
+-- Calculate the average score for the user from the corrections table
 -- Update the user's average score in the users table
 DELIMITER $$
 
