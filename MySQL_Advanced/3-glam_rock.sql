@@ -1,7 +1,7 @@
---Import this table dump: metal_bands.sql.zip
---Column names must be: origin and nb_fans
---Your script can be executed on any database
-SELECT origin, SUM(fans) AS nb_fans
+-- Write a SQL script that lists all bands with Glam rock as their main style, ranked by their longevity
+SELECT band_name, 
+       IFNULL(YEAR(split) - YEAR(formed), YEAR(CURDATE()) - YEAR(formed)) AS lifespan
 FROM metal_bands
-GROUP BY origin
-ORDER BY nb_fans DESC;
+WHERE main_style = 'Glam rock'
+ORDER BY lifespan DESC;
+
