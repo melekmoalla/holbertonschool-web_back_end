@@ -26,11 +26,10 @@ describe('sendPaymentRequestToApi with stub', () => {
     expect(consoleSpy.calledOnceWithExactly('The total is: 120')).to.be.true;
   });
 
-  it('should not call the original Utils.calculateNumber implementation', () => {
-    sendPaymentRequestToApi(50, 30);
+  it('should call Utils.calculateNumber with SUM, 10, and 10', () => {
+    sendPaymentRequestToApi(10, 10);
 
-    expect(stub.callCount).to.equal(1);
-    expect(stub.returned(10)).to.be.true;
+    expect(stub.calledOnceWithExactly('SUM', 10, 10)).to.be.true;
 
     expect(consoleSpy.calledOnceWithExactly('The total is: 20')).to.be.true;
   });
