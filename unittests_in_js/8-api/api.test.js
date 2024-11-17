@@ -18,6 +18,7 @@ describe('Index page', () => {
 
   it('should return the correct result for GET /', (done) => {
     request.get(`${baseUrl}/`, (err, res, body) => {
+    expect(res.statusCode).to.equal(200);
       expect(body).to.equal('Welcome to the payment system');
       done();
     });
