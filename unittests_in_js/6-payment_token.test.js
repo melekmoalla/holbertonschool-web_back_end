@@ -1,14 +1,23 @@
-// 6-payment_token.js
+const { expect } = require('chai');
+const getPaymentTokenFromAPI = require('./6-payment_token');
 
-function getPaymentTokenFromAPI(success) {
-    return new Promise((resolve, reject) => {
-      if (success) {
-        resolve({ data: 'Successful response from the API' });
-      } else {
-        reject();
-      }
-    });
-  }
-  
-  module.exports = getPaymentTokenFromAPI;
-  
+describe('getPaymentTokenFromAPI', () => {
+  it('should return a successful response when success is true', (done) => {
+    getPaymentTokenFromAPI(true)
+      .then((response) => {
+        expect(response).to.have.property('data').that.equals('Successful response from the API');
+        done();
+      })
+      .catch(done);
+  });
+
+  it('should not return a response when success is false', (done) => {
+    getPaymentTokenFromAPI(false)
+      .then(() => {
+        done(new Error('Expected to fail, but it did not'));
+      })
+      .catch(() => {
+        done();
+      });
+  });
+});
