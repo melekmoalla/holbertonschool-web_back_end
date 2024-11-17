@@ -27,5 +27,13 @@ describe('Index page', () => {
     });
   });
 
+  it('should return 404/', (done) => {
+    request.get(`${baseUrl}/cart/-20`, (err, res, body) => {
+    expect(res.statusCode).to.equal(200);
+      expect(body).to.equal(404);
+      done();
+    });
+  });
+
 
 });
