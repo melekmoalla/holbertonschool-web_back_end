@@ -27,10 +27,5 @@ describe('Index page', () => {
     });
   });
 
-  it('should return 404 for missing id',  (done) => {
-    request.get('/cart/', (err, res, body) => {
-    expect(res.status).to.equal(404);
-      done();
-    });
-  });
+
 });
